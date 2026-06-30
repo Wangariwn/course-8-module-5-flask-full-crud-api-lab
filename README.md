@@ -161,6 +161,59 @@ Test your endpoints using Postman or curl:
 
 ---
 
+## API Documentation
+
+This API manages events in memory. All successful responses are JSON unless noted.
+
+### Routes
+
+| Method | Route | Description | Success code |
+|--------|-------|-------------|--------------|
+| POST | `/events` | Create a new event | 201 Created |
+| PATCH | `/events/<id>` | Update an event title | 200 OK |
+| DELETE | `/events/<id>` | Remove an event | 204 No Content |
+
+### Example: Create event
+
+**Request:** `POST /events`
+
+```json
+{ "title": "Hackathon" }
+```
+
+**Response (201):**
+
+```json
+{ "id": 3, "title": "Hackathon" }
+```
+
+### Example: Update event
+
+**Request:** `PATCH /events/1`
+
+```json
+{ "title": "Hackathon 2025" }
+```
+
+**Response (200):**
+
+```json
+{ "id": 1, "title": "Hackathon 2025" }
+```
+
+### Example: Delete event
+
+**Request:** `DELETE /events/2`
+
+**Response:** 204 No Content (no body)
+
+### Errors
+
+- **400 Bad Request** — missing `title` in request body
+- **404 Not Found** — event id does not exist
+
+---
+
 ## Conclusion
 
 After completing this lab, you will:
